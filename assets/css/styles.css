@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&display=swap");
+
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(14, 98%, 50%); /*reddish orange */
+  --black-color: hsl(0, 0%, 0%);    /*black */
+  --black-color-light: hsl(0, 0%, 40%); /*dark gray*/
+  --white-color: hsl(0, 0%, 95%); /*ligh grey almost white*/
+  --title-color: hsl(0, 0%, 0%); /* black*/
+  --text-color: hsl(0, 0%, 35%); /*medium gray*/
+  --text-color-light: hsl(0, 0%, 64%); /*light gray*/
+  --body-color: hsl(0, 0%, 87%); /*very light gray */
+  --container-color: hsl(0, 0%, 83%); /*light gray */
+
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Bai Jamjuree", sans-serif;
+  --biggest-font-size: 2.5rem;
+  --h1-font-size: 1.75rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1.125rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/* ============= Base ===========*/
+
+*{
+  /*ensures padding and border are includeing in a elements total width and height */
+  box-sizing: border-box; 
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  transition: background-color .8s;
+}
+
+h1, h2, h3 {
+  color: var(--title-color);
+  font-weight: var(--font-bold);
+}
+
+/*removes the default bullets or numbering from lists */
+
+ul, ol{
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ensures images and videos dont overflow thier containers and mantain their aspect ration. */
+img, video { 
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.main {
+  overflow: hidden;
+}
+
+/* ================== Header ============== */
+header {
+  position:fixed;
+  width:100%;
+  top: 0;
+  left: 0;
+  background-color: var(--body-color);
+  z-index : var(--z-fixed);
+  transition: box-shadow .4s, background-color .8s;
+}
+
+.nav__container {
+  position: relative;
+  height: var(--header-height);
+  display:flex;
+  justify-content: space-between;;
+  align-items: center; /* verticle aligns items so they are centered */
+}
+.nav__logo {
+  display: flex;
+  align-items: center;
+  font-weight: var(--font-semi-bold);
+  color: var(--title-color);
+  padding-left: .4rem;
+  cursor: pointer;
+}
+.nav__logo-name {
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-semi-bold);
+  color: var(--text-color);
+}
+
+.nav__toggle {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--black-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  color: var(--white-color);
+  cursor: pointer;
+  margin-right: .4rem;
+}
+
+.nav__close {
+  position: absolute;
+  font-size: 1.5rem;
+  top: .2rem;
+  right: .1rem;
+  cursor: pointer;
+}
+
+.nav__menu ul {
+  width: 250px;
+  margin: 0 auto; /* center grid to the middle*/
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align:left;
+}
+
+.nav__link {
+  position: relative;
+  color: var(--text-color-light); /* Initial subtle color */
+  font-weight: var(--font-semi-bold);
+  transition: color 0.3s ease; color: var(--text-color);
+}
+
+.nav__link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px; /* Position the line just below the text */
+  left: 0; /*aligns elemnt to the edge of the link */
+  width: 0; /* No underline initially */
+  height: 2px; /* Thickness of the underline */
+  background: var(--text-color); /* Hover color for the underline */
+  transition: width 0.3s ease; /* Smooth underline animation */
+}
+
+.nav__link:hover::after {
+  width: 100%; /* expand the underline to cover the width of the link*/
+}
+.nav__link:hover {
+  color: var(--black-color);
+}
+
+
+
+/*======================= media screens ===================== */
+
+@media screen and (max-width: 1150px){
+  .nav__menu{
+    position: fixed;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 100%;
+    top: -100%;
+    left: 0;
+    background-color: hsla(0, 0%, 0%, .15);
+    backdrop-filter: blur(8px);
+    transition: top .4s;
+  }
+}
+
+
