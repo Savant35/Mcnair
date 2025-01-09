@@ -92,7 +92,7 @@ header {
   width:100%;
   top: 0;
   left: 0;
-  background-color: var(--body-color);
+  background-color: var(--container-color);
   z-index : var(--z-fixed);
   transition: box-shadow .4s, background-color .8s;
 }
@@ -142,7 +142,8 @@ header {
 
 .nav__menu ul {
   width: 250px;
-  margin: 0 auto; /* center grid to the middle*/
+  height: 200px;
+  margin: 2rem auto; /* center grid to the middle*/
   justify-content: center;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -154,6 +155,7 @@ header {
   color: var(--text-color-light); /* Initial subtle color */
   font-weight: var(--font-semi-bold);
   transition: color 0.3s ease; color: var(--text-color);
+  margin-left: 1rem;
 }
 
 .nav__link::after {
@@ -192,68 +194,164 @@ header {
 
 
 
-/*======================= student section =================== */
-.student__sidebar{
-  position: absolute;
-  margin-top: var(--header-height); 
-  right: 0;
-  width: 60%;
-  height: 90%;
-}
-.sidebar__title {
-  color: var(--black-color);
-  display: flex;
-  justify-content: center;
-  margin-top: .5rem;
-  margin-bottom: .5rem;
-}
 
-ul {
+/*--------------------------
+Sidebar (Students, Staff, Deadlines)
+---------------------------*/
+.student__sidebar {
+  position: fixed;
+  top: var(--header-height); /* Start below the fixed header */
+  right: -100%;
+  width: 60%;
+
+  /* Use full viewport height minus header height */
+  height: calc(100vh - var(--header-height));
+  background-color: var(--container-color);
+  padding: 1rem;
+  overflow: auto; /*let each section scroll individually */
   display: flex;
   flex-direction: column;
-  gap: .8rem;
-  margin-left: .5rem;
-  margin-right: .5rem;
-  border-radius: .5rem;
-  background-color: var(--container-color);
-  height: 45%;
-  overflow: auto;
+  gap: .5rem;
+  z-index: 10;
+}
+.show-sidebar {
+  right: 0;
 }
 
-.student__link {
-  margin-top: .5rem;
-  margin-left: .5rem;
+/* Common title styling */
+.sidebar__title {
   display: flex;
+  justify-content:space-between;
   color: var(--text-color);
-  left: 0;
-  gap: .4rem;
-  align-items: center;
+  font-weight: var(--font-semi-bold);
+  margin-left: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: -.6rem;
+  width: 100%;
 }
-.student__photo{
+
+#sidebar-close {
+  margin-right:1rem;
+  transition:font-size .8s color .4s;
+  cursor: pointer;
+}
+
+#sidebar-close:hover {
+  color: var(--first-color);
+  font-weight: var(--font-semi-bold);
+  font-size: 1rem;
+}
+
+/* 
+Each section (students, staff, deadlines) 
+will scroll if it has too much content.
+ */
+.students,
+.staff,
+.deadlines {
+  flex: 1; /* Let each section share space equally, or adjust as desired */
+  background-color: var(--container-color); 
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  overflow-y: auto; /* If content is long, scroll inside here */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Student/Staff item link (reuse same styles) */
+.student__link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem;
+  color: var(--text-color);
+  background-color: var(--body-color);
+  border-radius: 0.3rem;
+  transition: background-color 0.2s;
+}
+
+.student__link:hover {
+  background-color: var(--black-color-light);
+}
+
+.student__photo {
   border-radius: 50%;
   width: 2rem;
   height: 2rem;
 }
 
 
-/*======================= deadlines section =================== */
-.deadline__title {
-  margin-top: .5rem;
-  margin-bottom: .5rem;
-  display: flex;
-  justify-content:center;
-  color: var(--black-color);
-}
-
-
 .deadline__item {
+  background-color: var(--body-color);
+  border-radius: 0.3rem;
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
-  margin-top: 0;
-  margin-left: .5rem;
+  gap: 0.2rem;
 }
-.dealine__date {
+
+.deadline__date {
   font-size: var(--smaller-font-size);
+  color: var(--black-color-light);
+}
+
+
+/*--------------------------
+Home Section 
+---------------------------*/
+.home {
+  /*container for home menu */
+  padding-top: calc(var(--header-height) + 2rem);
+  min-height: 100vh;
+  background-color: var(--body-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.feed {
+  display: flex;
+  width: 90%;
+  gap: 1rem;
+  background-color: var(--container-color);
+  padding: .5rem;
+  border-radius: 8px;
+  height: 8rem;
+}
+
+.feed img {
+  border-radius: 8px;
+  width: 30%;
+}
+
+
+
+.main__container {
+  position: relative;
+  background-color: var(--container-color);
+  padding: .8rem;
+  border-radius: .5rem;
+  width: 90%;
+  z-index: 1;
+}
+.img__description3 {
+  position: absolute;
+  width: 93%;
+  padding: .5rem;
+  bottom: 5%;
+  overflow: auto;
+  color: var(--black-color); 
+  backdrop-filter: blur(40px);
+  z-index: 2;
+}
+.main__sub-container {
+  position: relative;
+  background-color: var(--container-color);
+  padding: .8rem;
+  border-radius: .5rem;
+  width: 90%;
+  z-index: 1;
 }
 
 /*======================= media screens ===================== */
