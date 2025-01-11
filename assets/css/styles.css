@@ -49,6 +49,30 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  display:none;
+}
+
+.home {
+  /*container for home menu */
+  padding-top: calc(var(--header-height) + 2rem);
+  min-height: 100vh;
+  background-color: var(--body-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  display: none; 
+}
+
+.about{
+  /*container for home menu */
+  padding-top: calc(var(--header-height) + 2rem);
+  min-height: 100vh;
+  background-color: var(--body-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
 /* ============= Base ===========*/
@@ -205,7 +229,7 @@ header {
   width: 100%;
   top: -100%;
   left: 0;
-  background-color: hsla(0, 0%, 0%, .15);
+  background-color: hsla(0, 0%, 0%, .15); /*hue ,saturation, lightness, transparacy */
   backdrop-filter: blur(8px);
   transition: top .4s;
 }
@@ -235,6 +259,7 @@ Sidebar (Students, Staff, Deadlines)
   flex-direction: column;
   gap: .5rem;
   z-index: 10;
+  transition: left 0.5s ease-in-out;
 }
 .show-sidebar {
   left: 0;
@@ -310,17 +335,7 @@ will scroll if it has too much content.
 /*--------------------------
 Home Section 
 ---------------------------*/
-.home {
-  /*container for home menu */
-  padding-top: calc(var(--header-height) + 2rem);
-  min-height: 100vh;
-  background-color: var(--body-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  display:none ;
-}
+
 
 .feed {
   display: flex;
@@ -380,9 +395,10 @@ Home Section
 Research Section 
 ---------------------------*/
 .section__title {
-  font-size: var(--h3-font-size);
+  font-size: var(--h2-font-size);
   font-weight: var(--font-bold);
   color: var(--title-color);
+  margin-top: -1rem;
 }
 
 .research__topics {
@@ -405,11 +421,56 @@ Research Section
 }
 
 .research__info{
-
   font-size: var(--normal-font-size);
 }
 
+/*--------------------------
+About Section 
+---------------------------*/
+.about__image {
+  position: relative; /* Create a containing block for absolute positioning */
+  width: 90%;
+}
 
+.about__img {
+  display: block; /* Remove inline spacing below the image */
+  width: 100%; /* Adjust to desired size */
+  border-radius: 8px; /* Optional: rounded corners for the image */
+  z-index: 2; /* Ensure it appears above the shadow */
+  position: relative; /* Position relative to the parent container */
+}
+
+.about__shadow {
+  position: absolute;
+  top: 10px; /* Adjust distance of the shadow */
+  left: 10px; /* Adjust distance of the shadow */
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2); /* Shadow color */
+  border-radius: 8px;
+  z-index: 1; 
+}
+
+.ronald__bio {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.about__mcnair {
+  margin-bottom: .3rem;
+}
+
+.about__ptitle {
+  margin-bottom: .3rem;
+  font-size: var(--h3-font-size);
+  color: var(--black-color);
+  font-weight: var(--font-semi-bold);
+
+}
+
+/*--------------------------
+Gallery Section 
+---------------------------*/
 
 
 /*======================= media screens ===================== */
