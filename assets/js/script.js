@@ -16,7 +16,7 @@ if (navClose){
   })
 }
 
-/*====================== Hide Menu Mobile when link is clicked =====================*/
+/*====================== Hide Menu Mobile when link is clicked ==========*/
   const nav = document.querySelectorAll('.nav__link');
 const action = () => {
   navMenu.classList.remove('show-menu');
@@ -24,26 +24,23 @@ const action = () => {
 nav.forEach(n => n.addEventListener('click', action));
 
 
-/*======================= side bar =================================================*/
-  const sidebarClose = document.getElementById("sidebar-close");
-const sidebarToggle = document.getElementById("sidebar-students");
+/*======================= side bar ====================================*/
+const sidebarToggle = document.getElementById("sidebar-open");
 const sidebar       = document.getElementById("student-sidebar");
 
-
-
+// Toggle the sidebar open/close and update the arrow
 if (sidebarToggle) {
-  sidebarToggle.addEventListener('click', () => {
-    sidebar.classList.add("show-sidebar");
+  sidebarToggle.addEventListener("click", () => {
+    const isOpen = sidebar.classList.toggle("show-sidebar"); // Toggle the class
+
+    // Flip the arrow direction
+    if (isOpen) {
+      sidebarToggle.classList.add("flipped"); // Add a class for flipped icon
+    } else {
+      sidebarToggle.classList.remove("flipped");
+    }
   });
 }
-
-  if (sidebarClose) {
-    sidebarClose.addEventListener('click', () => {
-      sidebar.classList.remove("show-sidebar"); 
-    });
-
-  }
-
 document.addEventListener('click', (event) => {
   // 1) Check if the sidebar is currently open
   if (sidebar.classList.contains('show-sidebar')) {
@@ -58,4 +55,7 @@ document.addEventListener('click', (event) => {
     }
   }
 });
+
+
+
 

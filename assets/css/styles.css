@@ -38,6 +38,19 @@
   --z-fixed: 100;
 }
 
+
+/* ============= Reusable ===========*/
+.research{
+  /*container for home menu */
+  padding-top: calc(var(--header-height) + 2rem);
+  min-height: 100vh;
+  background-color: var(--body-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
 /* ============= Base ===========*/
 
 *{
@@ -112,6 +125,15 @@ header {
   padding-left: .4rem;
   cursor: pointer;
 }
+
+#sidebar-open {
+  transition: transform .3s ease;
+}
+
+#sidebar-open.flipped {
+  transform: rotate(180deg);
+}
+
 .nav__logo-name {
   font-size: var(--h3-font-size);
   font-weight: var(--font-semi-bold);
@@ -201,7 +223,7 @@ Sidebar (Students, Staff, Deadlines)
 .student__sidebar {
   position: fixed;
   top: var(--header-height); /* Start below the fixed header */
-  right: -100%;
+  left: -100%;
   width: 60%;
 
   /* Use full viewport height minus header height */
@@ -215,7 +237,7 @@ Sidebar (Students, Staff, Deadlines)
   z-index: 10;
 }
 .show-sidebar {
-  right: 0;
+  left: 0;
 }
 
 /* Common title styling */
@@ -228,18 +250,6 @@ Sidebar (Students, Staff, Deadlines)
   margin-top: 1rem;
   margin-bottom: -.6rem;
   width: 100%;
-}
-
-#sidebar-close {
-  margin-right:1rem;
-  transition:font-size .8s color .4s;
-  cursor: pointer;
-}
-
-#sidebar-close:hover {
-  color: var(--first-color);
-  font-weight: var(--font-semi-bold);
-  font-size: 1rem;
 }
 
 /* 
@@ -309,23 +319,30 @@ Home Section
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  display:none ;
 }
+
 .feed {
   display: flex;
+  overflow-x:auto;
   width: 90%;
   gap: 1rem;
   background-color: var(--container-color);
   padding: .5rem;
   border-radius: 8px;
   height: 8rem;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.student__sidebar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for WebKit browsers */
 }
 
 .feed img {
   border-radius: 8px;
   width: 30%;
 }
-
-
 
 .main__container {
   position: relative;
@@ -335,16 +352,7 @@ Home Section
   width: 90%;
   z-index: 1;
 }
-.img__description3 {
-  position: absolute;
-  width: 93%;
-  padding: .5rem;
-  bottom: 5%;
-  overflow: auto;
-  color: var(--black-color); 
-  backdrop-filter: blur(40px);
-  z-index: 2;
-}
+
 .main__sub-container {
   position: relative;
   background-color: var(--container-color);
@@ -353,6 +361,56 @@ Home Section
   width: 90%;
   z-index: 1;
 }
+
+.img__description4 {
+  position: absolute;
+  text-align:left;
+  width: 93%;
+  padding: .5rem;
+  bottom: 5%;
+  overflow: auto;
+  color: var(--black-color); 
+  backdrop-filter: blur(40px);
+  z-index: 2;
+}
+
+
+
+/*--------------------------
+Research Section 
+---------------------------*/
+.section__title {
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-bold);
+  color: var(--title-color);
+}
+
+.research__topics {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.research__card {
+  background-color: var(--container-color);
+  padding: .8rem;
+  border-radius: .5rem;
+}
+
+.research__card img {
+  width: 100%;
+  height: 8rem;
+  border-radius:.4rem;
+}
+
+.research__info{
+
+  font-size: var(--normal-font-size);
+}
+
+
+
 
 /*======================= media screens ===================== */
 
