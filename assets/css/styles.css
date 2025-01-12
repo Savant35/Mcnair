@@ -49,7 +49,6 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  display:none;
 }
 
 .home {
@@ -61,10 +60,20 @@
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  display: none; 
 }
 
 .about{
+  /*container for home menu */
+  padding-top: calc(var(--header-height) + 2rem);
+  min-height: 100vh;
+  background-color: var(--body-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.gallery{
   /*container for home menu */
   padding-top: calc(var(--header-height) + 2rem);
   min-height: 100vh;
@@ -471,6 +480,42 @@ About Section
 /*--------------------------
 Gallery Section 
 ---------------------------*/
+.globe__container {
+  background-color: lightblue;
+  width: 80vw;
+  height: 80vw;
+  max-width: 800px;
+  max-height: 800px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+#mcnair-quote {
+  width: 90%;
+  background-color:var(--white-color);
+  border-radius: .5rem;
+  padding: .4rem;
+  text-align:left;
+}
+
+.quotes__container{
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: .5rem;
+
+}
+
+.gallery__quotes {
+  background-color: var(--white-color);
+  padding: .4rem;
+  border-radius: .5rem;
+}
+
+
+
+
 
 
 /*======================= media screens ===================== */
