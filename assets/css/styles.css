@@ -40,8 +40,9 @@
 
 
 /* ============= Reusable ===========*/
+/*
 .research{
-  /*container for home menu */
+  /*container for home menu 
   padding-top: calc(var(--header-height) + 2rem);
   min-height: 100vh;
   background-color: var(--body-color);
@@ -52,7 +53,7 @@
 }
 
 .home {
-  /*container for home menu */
+  /*container for home menu 
   padding-top: calc(var(--header-height) + 2rem);
   min-height: 100vh;
   background-color: var(--body-color);
@@ -63,7 +64,7 @@
 }
 
 .about{
-  /*container for home menu */
+  /*container for home menu 
   padding-top: calc(var(--header-height) + 2rem);
   min-height: 100vh;
   background-color: var(--body-color);
@@ -74,7 +75,7 @@
 }
 
 .gallery{
-  /*container for home menu */
+  /*container for home menu 
   padding-top: calc(var(--header-height) + 2rem);
   min-height: 100vh;
   background-color: var(--body-color);
@@ -83,6 +84,18 @@
   align-items: center;
   gap: 2rem;
 }
+*/
+
+.section__page{
+  padding-top: calc(var(--header-height) + 2rem);
+  min-height: 100vh;
+  background-color: var(--body-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
 
 /* ============= Base ===========*/
 
@@ -249,6 +262,31 @@ header {
 
 
 
+/*--------------------------
+Phone nav
+---------------------------*/
+.phone__nav {
+  position: fixed;
+  z-index: 100;
+  color: var(--black-color);
+  bottom:0;
+  width: 100%;
+  padding: 1rem;
+  font-size: 2.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;;
+  background-color: var(--container-color)
+}
+
+.phone__nav i {
+  color: var(--black-color);
+}
+
+
+
+
+
 
 /*--------------------------
 Sidebar (Students, Staff, Deadlines)
@@ -270,6 +308,7 @@ Sidebar (Students, Staff, Deadlines)
   z-index: 10;
   transition: left 0.5s ease-in-out;
 }
+
 .show-sidebar {
   left: 0;
 }
@@ -286,22 +325,24 @@ Sidebar (Students, Staff, Deadlines)
   width: 100%;
 }
 
-/* 
-Each section (students, staff, deadlines) 
-will scroll if it has too much content.
- */
-.students,
-.staff,
-.deadlines {
-  flex: 1; /* Let each section share space equally, or adjust as desired */
-  background-color: var(--container-color); 
+/* Allocate 70% of space to .students and the rest to the other sections */
+.students {
+  flex: 0 0 70%; /* Do not grow or shrink beyond 70% */
+  background-color: var(--container-color);
   border-radius: 0.5rem;
   padding: 0.5rem;
-  overflow-y: auto; /* If content is long, scroll inside here */
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  overflow-y: auto;
 }
+
+.staff,
+.deadlines {
+  flex: 1; /* They share the remaining 30% evenly */
+  background-color: var(--container-color);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  overflow-y: auto;
+}
+
 
 /* Student/Staff item link (reuse same styles) */
 .student__link {
@@ -357,6 +398,8 @@ Home Section
   height: 8rem;
   scrollbar-width: none;
   scroll-behavior: smooth;
+  display: none;
+
 }
 
 .student__sidebar::-webkit-scrollbar {
@@ -484,8 +527,8 @@ Gallery Section
   background-color: lightblue;
   width: 80vw;
   height: 80vw;
-  max-width: 800px;
-  max-height: 800px;
+  max-width: 600px;
+  max-height: 600px;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   border-radius: 50%;
   overflow: hidden;
@@ -521,6 +564,18 @@ Gallery Section
 /*======================= media screens ===================== */
 
 @media screen and (max-width: 1150px){
+  @media screen and (min-width: 500px){
+    .feed {
+      display: flex;
+
+    }
+.student__sidebar {
+      width: 40%;
+    }
+    .phone__nav {
+      display: none;
+    }
+  }
 
 }
 

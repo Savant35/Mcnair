@@ -1,6 +1,28 @@
 /*=================== Show Menu and Hide Menu when button is clicked ===============*/
 
-  const navToggle = document.getElementById("nav-toggle");
+  document.addEventListener("DOMContentLoaded", () => {
+  const phoneNavButtons = document.querySelectorAll(".phone__nav i");
+
+  phoneNavButtons.forEach(button => {
+    button.addEventListener("click", event => {
+      const targetId = button.getAttribute("data-target");
+      const targetSection = document.getElementById(targetId);
+
+      if (targetSection) {
+        // Scroll instantly to the target section
+        window.scrollTo({
+          top: targetSection.offsetTop,
+          behavior: "auto" // Instant scroll
+        });
+
+        // Optional: Prevent default behavior if using <a> tags
+        event.preventDefault();
+      }
+    });
+  });
+});
+
+const navToggle = document.getElementById("nav-toggle");
 const navClose = document.getElementById("nav-close");
 const navMenu = document.getElementById("nav-menu");
 
@@ -15,6 +37,7 @@ if (navClose){
     navMenu.classList.remove('show-menu');
   })
 }
+
 
 /*====================== Hide Menu Mobile when link is clicked ==========*/
   const nav = document.querySelectorAll('.nav__link');
@@ -110,7 +133,17 @@ const textureLoader = new THREE.TextureLoader();
 
 // Array of image URLs    
 const imageUrls = [
-  'assets/img/brain.webp',
+  /*
+  'assets/img/gallery1.jpg',
+  'assets/img/gallery2.jpg',
+  'assets/img/gallery3.jpg',
+  'assets/img/gallery4.jpg',
+  'assets/img/gallery5.jpg',
+  'assets/img/gallery6.jpg',
+  'assets/img/gallery7.jpg'
+];
+*/
+  
   'https://picsum.photos/id/1011/512/512',
   'https://picsum.photos/id/1012/512/512',
   'https://picsum.photos/id/1015/512/512',
@@ -158,7 +191,7 @@ scene.add(globeGroup);
   }
 
 // Generate positions for all images
-const totalImages = 100; // Increased number for tighter coverage
+const totalImages = 80; // Increased number for tighter coverage
 const globeRadius = 1; // Adjust based on desired size
 const positions = generateGlobePositions(totalImages, globeRadius);
 
@@ -178,7 +211,7 @@ for (let i = 0; i < totalImages; i++) {
 
   const spriteMaterial = new THREE.SpriteMaterial({ map: texture, transparent: true });
   const sprite = new THREE.Sprite(spriteMaterial);
-  sprite.scale.set(0.35, 0.35, 1); // Reduced size for tighter coverage
+  sprite.scale.set(0.33, 0.35, 1); // Reduced size for tighter coverage
 
   // Position the sprite
   const pos = positions[i];
