@@ -173,6 +173,8 @@ header {
 }
 
 #sidebar-open {
+  font-size: 1.25rem;
+  padding-right: .5rem;
   transition: transform .3s ease;
 }
 
@@ -267,22 +269,34 @@ Phone nav
 ---------------------------*/
 .phone__nav {
   position: fixed;
+  width: 100%;
   z-index: 100;
   color: var(--black-color);
   bottom:0;
-  width: 100%;
-  padding: 1rem;
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   display: flex;
-  justify-content: space-between;
-  align-content: center;;
-  background-color: var(--container-color)
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+  height: 3.5rem;
+  background-color: var(--container-color);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .phone__nav i {
   color: var(--black-color);
 }
 
+.phone__nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.phone__nav a span{
+  font-size: var(--smaller-font-size);
+}
 
 
 
@@ -307,6 +321,7 @@ Sidebar (Students, Staff, Deadlines)
   gap: .5rem;
   z-index: 10;
   transition: left 0.5s ease-in-out;
+  height: calc(100vh - 7rem);
 }
 
 .show-sidebar {
@@ -564,11 +579,12 @@ Gallery Section
 /*======================= media screens ===================== */
 
 @media screen and (max-width: 1150px){
+}
   @media screen and (min-width: 500px){
     .feed {
       display: flex;
-
     }
+
 .student__sidebar {
       width: 40%;
     }
@@ -577,6 +593,5 @@ Gallery Section
     }
   }
 
-}
 
 
