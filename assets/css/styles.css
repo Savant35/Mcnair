@@ -478,7 +478,6 @@ Research Section
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   overflow: hidden;
-  border: 2px solid red;
 }
 
 /*=============================
@@ -495,7 +494,6 @@ Research Section
   padding: 0.8rem;
   overflow: visible;
   z-index: 1;
-  border: 2px solid blue;
 }
 
 
@@ -515,7 +513,7 @@ Research Section
 =============================*/
 .research__card-front,
 .research__card-back {
-  position: fixed;
+  position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 8px;
@@ -546,7 +544,7 @@ Research Section
 .research__card:hover .card {
   transform: rotateY(180deg);
   width: 90vw;          /* Expand horizontally to 90% of viewport width */
-  height: 300px;        /* Adjust height as desired */
+  height: 300px;        
 }
 
 /*=============================
@@ -682,11 +680,6 @@ Gallery Section
   padding: .4rem;
   border-radius: .5rem;
 }
-
-
-
-
-
 
 /*======================= media screens ===================== */
 
